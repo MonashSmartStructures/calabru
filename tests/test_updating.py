@@ -27,7 +27,7 @@ def test_basic_update():
     print(simple_beam_updating.param_update_history)
     print(simple_beam_updating.response_history)
     tol = 1  # custom tolerance
-    tol2 = 1e-3
+    tol2 = 1e-2
     assert np.isclose(simple_beam_updating.param_update_history[-1][0], 1000, rtol=tol)
     assert np.isclose(
         simple_beam_updating.param_update_history[-1][1], 0.3694, rtol=tol2
