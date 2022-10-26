@@ -1,0 +1,15 @@
+numpy
+matplotlib
+pytest>=6.1.1
+copy
+datetime
+scipy
+pydata-sphinx-theme
+Sphinx>=4.0
+nbsphinx
+sphinx-autodoc-typehints
+pandoc
+markupsafe==2.0.1
+pygments >= 2.7
+PyCBA
+ospgrillage

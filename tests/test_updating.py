@@ -6,7 +6,7 @@ import sys, os
 import numpy as np
 
 sys.path.insert(0, os.path.abspath("../"))
-from calibrator import *
+from calabru.calibrator import *
 import fixtures
 
 
@@ -40,8 +40,10 @@ def test_target_resp_as_list():
     consider the root mean square between the target measurement and metrics from function handler.
 
     """
-    start = [ 0.2]
-    target = [[0.0, 5.2433545467515094e-05, 9.984279414955342e-05, 0.00013613326490916162, 0.00015584130641133412, 0.0001558413064113349, 0.00013613326490916387, 9.984279414955602e-05, 5.243354546751693e-05, 0.0]]  # [-30785, -3801]
+    start = [0.2]
+    target = [[0.0, 5.2433545467515094e-05, 9.984279414955342e-05, 0.00013613326490916162, 0.00015584130641133412,
+               0.0001558413064113349, 0.00013613326490916387, 9.984279414955602e-05, 5.243354546751693e-05,
+               0.0]]  # [-30785, -3801]
     simple_beam_updating = ModelUpdating(
         function_handle=fixtures.beam_with_patch_load_including_deflected_shape_output,
         param_list=start,
@@ -52,7 +54,7 @@ def test_target_resp_as_list():
     print(simple_beam_updating.param_update_history)
     tol = 1  # custom tolerance
     tol2 = 1e-1
-    #assert np.isclose(simple_beam_updating.param_update_history[-1][0], 1000, rtol=tol)
+    # assert np.isclose(simple_beam_updating.param_update_history[-1][0], 1000, rtol=tol)
     assert np.isclose(
         simple_beam_updating.param_update_history[-1][0], 0.3694, rtol=tol2
     )

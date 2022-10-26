@@ -31,6 +31,7 @@ class ModelUpdating:
         :param param_increm_rate: Increment rate of parameters between each step. Default 10%
         :param max_error: Error threshold to be minimize.
         """
+        print("DEVELOPER")
         # get model and load case inputs
         self.sensitivity_type = kwargs.get("sensitivity_type", "FDM")  # default finite difference method
         self.function_handle = function_handle
