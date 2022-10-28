@@ -1,2 +1,2 @@
-from calabru.calibrator import *
+from .calibrator import *
 

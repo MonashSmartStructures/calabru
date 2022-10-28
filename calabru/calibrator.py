@@ -31,7 +31,7 @@ class ModelUpdating:
         :param param_increm_rate: Increment rate of parameters between each step. Default 10%
         :param max_error: Error threshold to be minimize.
         """
-        print("DEVELOPER")
+
         # get model and load case inputs
         self.sensitivity_type = kwargs.get("sensitivity_type", "FDM")  # default finite difference method
         self.function_handle = function_handle
@@ -203,9 +203,9 @@ class ModelUpdating:
 
                     interp_ref_resp = self._interpolate_measurements(data_x=abs_time_measure, data_y=ref_resp,
                                                                      model_x=model_abs_axis)
-                    # plt.plot(model_abs_axis,interp_ref_resp)
-                    # plt.plot(model_abs_axis,kth_model_response)
-                    # plt.show()
+                    plt.plot(model_abs_axis, interp_ref_resp)
+                    plt.plot(model_abs_axis, kth_model_response)
+                    plt.show()
                 rmse = self._calculate_rmse(ref_response_list=interp_ref_resp, current_response_list=kth_model_response)
 
                 # append rmse to resp disp
@@ -239,32 +239,6 @@ class ModelUpdating:
                         (inc_response[model_index][i] - response[model_index][i])
                         / (param * abs(self.increment_rate - 1))
                     )
-
-        # for i in range(len(target_resp)):
-        #     local_sens_mat = []
-        #     for j, param in enumerate(param_list):
-        #         inc_param_list = copy.deepcopy(param_list)
-        #         inc_param_list[j] = (
-        #                 param * self.increment_rate
-        #         )  # increment a single param for updating
-        #         inc_response = self.function_handle(inc_param_list, **self.kwarg)
-        #         # checks if output from function handler is a list
-        #         if not isinstance(inc_response[0], list):
-        #             inc_response = [inc_response]
-        #
-        #         # checks if the current response is a list
-        #         if hasattr(target_resp[i],"__len__"):
-        #             # calculate rmse
-        #             rmse = self._calculate_rmse(ref_response_list=inc_response[model_index][i]
-        #                                         , current_response_list=response[model_index][i])
-        #             local_sens_mat.append(rmse / (param * abs(self.increment_rate - 1)))
-        #         else:
-        #             local_sens_mat.append(
-        #                 (inc_response[model_index][i] - response[model_index][i])
-        #                 / (param * abs(self.increment_rate - 1))
-        #             )
-        #
-        #     self.sensitivity_matrix.append(local_sens_mat)
 
     def get_updated_response(self, param_list):
 
