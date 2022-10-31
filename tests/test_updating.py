@@ -60,6 +60,33 @@ def test_target_resp_as_list():
     )
 
 
+def test_param_bounds():
+    """
+    This test checks the basic updating procedure. The test uses creates an ospgrillage model, updates
+    two parameters [P, I], using two pretend measurements of forces as targets.
+
+    """
+    start = [2000, 0.2]
+    # bounds set to first param
+    bounds = [[1500, 3000], []]
+    target = [1558.6480741602825, 2956.470189168508]  # [-30785, -3801]
+    simple_beam_updating = ModelUpdating(
+        function_handle=fixtures.beam_with_patch_load,
+        param_list=start,
+        target_list=target,
+        param_bounds_list=bounds
+    )
+    simple_beam_updating.update_model()
+    print(simple_beam_updating.param_update_history)
+    print(simple_beam_updating.response_history)
+    tol = 1  # custom tolerance
+    tol2 = 1e-2
+    assert np.isclose(simple_beam_updating.param_update_history[-1][0], 1500, rtol=tol)
+    assert np.isclose(
+        simple_beam_updating.param_update_history[-1][1], 0.3694, rtol=tol2
+    )
+
+
 def test_more_param_than_response():
     """
     Checks inversion of sensitivity matrix for updating case where there are more parameters than responses.

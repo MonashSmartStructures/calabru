@@ -40,6 +40,18 @@ class ModelUpdating:
         self.name = kwargs.get("filename", "Untitled_update_output")
         # init vars of updating
         self.param_list = kwargs.get("param_list", [])  # starting param list
+        self.param_bounds_list = kwargs.get("param_bounds_list", [[] for item in self.param_list]) # bounds for params
+        # empty list means no bounds.
+
+        # check validity of param bounds
+        if len(self.param_list) != len(self.param_bounds_list):
+            raise Exception("Param bound list must match the number of parameters: Hint specify empty list [] to params that are not bounded")
+
+        for item in self.param_bounds_list:
+            if item and len(item) != 2:
+                raise Exception("For {} bounds should have an upper and lower bound value".format(item))
+            if item and item[0] > item[1]:
+                raise Exception("For {} Upper bound has lower value than its lower bound ".format(item))
 
         self.target_response_list = kwargs.get("target_list", [])  # objectives
         if not isinstance(self.target_response_list[0], list):
@@ -74,7 +86,7 @@ class ModelUpdating:
         """
         self.target_response_list = target_list
 
-    def set_param(self, param_list: list):
+    def set_param(self, param_list: list,variance_range=None):
         """
         Function to set/overwrite updating parameters - inputs to main() function.
         :param param_list: list of starting parameter values. Note: list order must correspond to the input of
@@ -119,7 +131,22 @@ class ModelUpdating:
 
             # update param steps
             param_increments: list = esti.tolist()  # convert np array to list
-            param_esti_list = [a + b for (a, b) in zip(param_increments, current_param)]
+
+            param_esti_list = []
+            for k,increm in enumerate(param_increments):
+                new_kth_param_value = increm+current_param[k]
+                if self.param_bounds_list[k]:
+                    # bounds specify, check if param are within bounds
+                    lb_val = self.param_bounds_list[k][0]
+                    ub_val = self.param_bounds_list[k][1]
+                    if not lb_val <= new_kth_param_value <= ub_val:
+                        # param out of bounds,take the bound values as new value
+                        bound_array = np.array([lb_val,ub_val])
+                        new_kth_param_value = bound_array[(np.abs(bound_array-new_kth_param_value)).argmin()]
+
+                param_esti_list.append(new_kth_param_value)
+
+            # param_esti_list = [a + b for (a, b) in zip(param_increments, current_param)]
             self.param_update_history.append(param_esti_list)
             # check updating
             # response error
@@ -203,9 +230,9 @@ class ModelUpdating:
 
                     interp_ref_resp = self._interpolate_measurements(data_x=abs_time_measure, data_y=ref_resp,
                                                                      model_x=model_abs_axis)
-                    plt.plot(model_abs_axis, interp_ref_resp)
-                    plt.plot(model_abs_axis, kth_model_response)
-                    plt.show()
+                    # plt.plot(model_abs_axis, interp_ref_resp)
+                    # plt.plot(model_abs_axis, kth_model_response)
+                    # plt.show()
                 rmse = self._calculate_rmse(ref_response_list=interp_ref_resp, current_response_list=kth_model_response)
 
                 # append rmse to resp disp
