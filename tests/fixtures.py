@@ -27,9 +27,9 @@ def beam_with_patch_load(p_matrix: list):
     N = 1
     m = 1
     mm = milli * m
-    m2 = m ** 2
-    m3 = m ** 3
-    m4 = m ** 4
+    m2 = m**2
+    m3 = m**3
+    m4 = m**4
     kN = kilo * N
     MPa = N / ((mm) ** 2)
     GPa = kilo * MPa
@@ -159,6 +159,7 @@ def beam_with_patch_load(p_matrix: list):
 
     return r_mat
 
+
 def beam_with_patch_load_including_deflected_shape_output(p_matrix: list):
     """
     A version of beam_with_patch_load - this time the output measurements comprise the deflected shape across the node
@@ -171,7 +172,7 @@ def beam_with_patch_load_including_deflected_shape_output(p_matrix: list):
 
     """
     # sort parameter variable
-    #P = p_matrix[0]
+    # P = p_matrix[0]
     P = 1000
     Iz = p_matrix[0]
 
@@ -181,9 +182,9 @@ def beam_with_patch_load_including_deflected_shape_output(p_matrix: list):
     N = 1
     m = 1
     mm = milli * m
-    m2 = m ** 2
-    m3 = m ** 3
-    m4 = m ** 4
+    m2 = m**2
+    m3 = m**3
+    m4 = m**4
     kN = kilo * N
     MPa = N / ((mm) ** 2)
     GPa = kilo * MPa
@@ -309,8 +310,8 @@ def beam_with_patch_load_including_deflected_shape_output(p_matrix: list):
     results = simple_bridge.get_results()
 
     # arbitrary force components
-    r_mat = [[og.ops.nodeDisp(n)[1] for n in [2,9,16,23,30,37,44,51,58,65]]]
-    #og.ops.eleForce(25)[1],
+    r_mat = [[og.ops.nodeDisp(n)[1] for n in [2, 9, 16, 23, 30, 37, 44, 51, 58, 65]]]
+    # og.ops.eleForce(25)[1],
     return r_mat
 
 
@@ -419,7 +420,7 @@ if __name__ == "__main__":
     # b = pycba_example(p_matrix=[10])
     # b = pycba_example_moving_veh_ei(p_matrix=[10])
 
-    #b = beam_with_patch_load_including_deflected_shape_output(p_matrix=[1000, 0.369])
+    # b = beam_with_patch_load_including_deflected_shape_output(p_matrix=[1000, 0.369])
     b = beam_with_patch_load(p_matrix=[1000, 0.369])
     print(b)
     print("exec main")

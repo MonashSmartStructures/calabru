@@ -33,25 +33,39 @@ class ModelUpdating:
         """
 
         # get model and load case inputs
-        self.sensitivity_type = kwargs.get("sensitivity_type", "FDM")  # default finite difference method
+        self.sensitivity_type = kwargs.get(
+            "sensitivity_type", "FDM"
+        )  # default finite difference method
         self.function_handle = function_handle
         # for output
         self.write_into_txt = kwargs.get("write_output_txt", True)
         self.name = kwargs.get("filename", "Untitled_update_output")
         # init vars of updating
         self.param_list = kwargs.get("param_list", [])  # starting param list
-        self.param_bounds_list = kwargs.get("param_bounds_list", [[] for item in self.param_list]) # bounds for params
+        self.param_bounds_list = kwargs.get(
+            "param_bounds_list", [[] for item in self.param_list]
+        )  # bounds for params
         # empty list means no bounds.
 
         # check validity of param bounds
         if len(self.param_list) != len(self.param_bounds_list):
-            raise Exception("Param bound list must match the number of parameters: Hint specify empty list [] to params that are not bounded")
+            raise Exception(
+                "Param bound list must match the number of parameters: Hint specify empty list [] to params that are not bounded"
+            )
 
         for item in self.param_bounds_list:
             if item and len(item) != 2:
-                raise Exception("For {} bounds should have an upper and lower bound value".format(item))
+                raise Exception(
+                    "For {} bounds should have an upper and lower bound value".format(
+                        item
+                    )
+                )
             if item and item[0] > item[1]:
-                raise Exception("For {} Upper bound has lower value than its lower bound ".format(item))
+                raise Exception(
+                    "For {} Upper bound has lower value than its lower bound ".format(
+                        item
+                    )
+                )
 
         self.target_response_list = kwargs.get("target_list", [])  # objectives
         if not isinstance(self.target_response_list[0], list):
@@ -60,9 +74,15 @@ class ModelUpdating:
 
         # init var storing history of updating process
         self.sensitivity_matrix = []  # sens matrix local to a single model data set
-        self.global_sensitivity_matrix = []  # sens matrix global to all model data set considered
-        self.resp_diff = []  # response difference between target ref and current updating step (resets every loop)
-        self.global_resp_diff = []  # response difference across all model data set considered
+        self.global_sensitivity_matrix = (
+            []
+        )  # sens matrix global to all model data set considered
+        self.resp_diff = (
+            []
+        )  # response difference between target ref and current updating step (resets every loop)
+        self.global_resp_diff = (
+            []
+        )  # response difference across all model data set considered
         self.sensitivity_matrix_history = []  # record history of sensitivity matrices
         self.param_update_history = []  # record history of parameter update
         self.response_history = []  # record history of parameter update
@@ -86,7 +106,7 @@ class ModelUpdating:
         """
         self.target_response_list = target_list
 
-    def set_param(self, param_list: list,variance_range=None):
+    def set_param(self, param_list: list, variance_range=None):
         """
         Function to set/overwrite updating parameters - inputs to main() function.
         :param param_list: list of starting parameter values. Note: list order must correspond to the input of
@@ -133,16 +153,18 @@ class ModelUpdating:
             param_increments: list = esti.tolist()  # convert np array to list
 
             param_esti_list = []
-            for k,increm in enumerate(param_increments):
-                new_kth_param_value = increm+current_param[k]
+            for k, increm in enumerate(param_increments):
+                new_kth_param_value = increm + current_param[k]
                 if self.param_bounds_list[k]:
                     # bounds specify, check if param are within bounds
                     lb_val = self.param_bounds_list[k][0]
                     ub_val = self.param_bounds_list[k][1]
                     if not lb_val <= new_kth_param_value <= ub_val:
                         # param out of bounds,take the bound values as new value
-                        bound_array = np.array([lb_val,ub_val])
-                        new_kth_param_value = bound_array[(np.abs(bound_array-new_kth_param_value)).argmin()]
+                        bound_array = np.array([lb_val, ub_val])
+                        new_kth_param_value = bound_array[
+                            (np.abs(bound_array - new_kth_param_value)).argmin()
+                        ]
 
                 param_esti_list.append(new_kth_param_value)
 
@@ -150,11 +172,13 @@ class ModelUpdating:
             self.param_update_history.append(param_esti_list)
             # check updating
             # response error
-            e_response = np.sqrt(sum([resp ** 2 for resp in self.global_resp_diff])) \
-                         / np.sqrt(sum([target ** 2 for target in self.target_response_list[0]]))
+            e_response = np.sqrt(
+                sum([resp**2 for resp in self.global_resp_diff])
+            ) / np.sqrt(sum([target**2 for target in self.target_response_list[0]]))
             # parameter estimation error
-            error = np.sqrt(sum([estimates ** 2 for estimates in param_increments])) \
-                    / np.sqrt(sum([current for current in current_param]))
+            error = np.sqrt(
+                sum([estimates**2 for estimates in param_increments])
+            ) / np.sqrt(sum([current for current in current_param]))
             if error < abs(self.max_error):
                 break
             # store for each step
@@ -218,22 +242,28 @@ class ModelUpdating:
                     model_time = list(response[model_index][k].keys())
 
                     if len(ref_resp) > len(response):
-                        interp_ref_resp = self._interpolate_measurements(data_x=time, data_y=val,
-                                                                         model_x=model_time)
+                        interp_ref_resp = self._interpolate_measurements(
+                            data_x=time, data_y=val, model_x=model_time
+                        )
                     else:
-                        interp_ref_resp = self._interpolate_measurements(data_x=model_time, data_y=val,
-                                                                         model_x=time)
+                        interp_ref_resp = self._interpolate_measurements(
+                            data_x=model_time, data_y=val, model_x=time
+                        )
                 else:
                     # create an absolute axis between 0 to 1
                     model_abs_axis = np.linspace(0, 1, len(kth_model_response))
                     abs_time_measure = np.linspace(0, 1, len(ref_resp))
 
-                    interp_ref_resp = self._interpolate_measurements(data_x=abs_time_measure, data_y=ref_resp,
-                                                                     model_x=model_abs_axis)
+                    interp_ref_resp = self._interpolate_measurements(
+                        data_x=abs_time_measure, data_y=ref_resp, model_x=model_abs_axis
+                    )
                     # plt.plot(model_abs_axis, interp_ref_resp)
                     # plt.plot(model_abs_axis, kth_model_response)
                     # plt.show()
-                rmse = self._calculate_rmse(ref_response_list=interp_ref_resp, current_response_list=kth_model_response)
+                rmse = self._calculate_rmse(
+                    ref_response_list=interp_ref_resp,
+                    current_response_list=kth_model_response,
+                )
 
                 # append rmse to resp disp
                 self.resp_diff.append(rmse)
@@ -245,9 +275,7 @@ class ModelUpdating:
         # loop through each param
         for j, param in enumerate(param_list):
             inc_param_list = copy.deepcopy(param_list)
-            inc_param_list[j] = (
-                    param * self.increment_rate
-            )
+            inc_param_list[j] = param * self.increment_rate
             inc_response = self.function_handle(inc_param_list, **self.kwarg)
             # for each response of current param increment, calculate sensitivity, store to sensitivity matrix
             for i in range(len(target_resp)):
@@ -258,9 +286,13 @@ class ModelUpdating:
                 # checks if the current response is a list
                 if hasattr(target_resp[i], "__len__"):
                     # calculate rmse
-                    rmse = self._calculate_rmse(ref_response_list=inc_response[model_index][i]
-                                                , current_response_list=response[model_index][i])
-                    self.sensitivity_matrix[i].append(rmse / (param * abs(self.increment_rate - 1)))
+                    rmse = self._calculate_rmse(
+                        ref_response_list=inc_response[model_index][i],
+                        current_response_list=response[model_index][i],
+                    )
+                    self.sensitivity_matrix[i].append(
+                        rmse / (param * abs(self.increment_rate - 1))
+                    )
                 else:
                     self.sensitivity_matrix[i].append(
                         (inc_response[model_index][i] - response[model_index][i])
@@ -284,20 +316,14 @@ class ModelUpdating:
         with open(name, "w") as file_handle:
             # create py file or overwrite existing
             # writing headers and description at top of file
-            file_handle.write(
-                "# Output updating analysis for: {}\n".format(
-                    name
-                )
-            )
+            file_handle.write("# Output updating analysis for: {}\n".format(name))
 
             # time
             now = datetime.now()
             dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
             file_handle.write("# Constructed on:{}\n".format(dt_string))
             # write imports
-            file_handle.write(
-                "Parameter history \n"
-            )
+            file_handle.write("Parameter history \n")
             for val in self.param_update_history:
                 np.savetxt(file_handle, val)
 
@@ -328,9 +354,15 @@ class ModelUpdating:
             )
             estimate = np.dot(pseudo_inv, resp_diff)
         elif resp_num < param_num:
-            pseudo_inv = np.dot(sens_mat_transpose,
-                                np.linalg.inv(np.dot(sens_mat, sens_mat_transpose, )),
-                                )
+            pseudo_inv = np.dot(
+                sens_mat_transpose,
+                np.linalg.inv(
+                    np.dot(
+                        sens_mat,
+                        sens_mat_transpose,
+                    )
+                ),
+            )
             estimate = np.dot(pseudo_inv, resp_diff)
 
         return estimate
@@ -340,7 +372,13 @@ class ModelUpdating:
         N = len(ref_response_list)
 
         return np.sqrt(
-            sum([(ref - current) ** 2 / N for (ref, current) in zip(ref_response_list, current_response_list)]))
+            sum(
+                [
+                    (ref - current) ** 2 / N
+                    for (ref, current) in zip(ref_response_list, current_response_list)
+                ]
+            )
+        )
 
     @staticmethod
     def _get_bayesian_param_estimation(sens_mat, resp_diff, current_param, cp, cr):
