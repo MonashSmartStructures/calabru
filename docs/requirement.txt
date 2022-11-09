@@ -1,7 +1,6 @@
 numpy
 matplotlib
 pytest>=6.1.1
-copy
 datetime
 scipy
 pydata-sphinx-theme
