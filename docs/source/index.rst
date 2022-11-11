@@ -3,8 +3,6 @@ Calabru
 `calabru` [1]_ is a calibration framework for model/analysis/data systems in the Python
 environment.
 
-Fun fact name "Calabru" is an irish
-
 The calibration framework includes several state-of-the-art model updating methods such as:
 
 - Sensitivity-based analysis
