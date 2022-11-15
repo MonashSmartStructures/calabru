@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Main module for model calibration / updating procedures.
+Main calibration module
 """
 import numpy as np
 
@@ -17,24 +17,26 @@ class ModelUpdating:
 
     def __init__(self, function_handle, **kwargs):
         """
+
         :param function_handle: Function handler to create and analyze models in Python environment. Note the function
          handler must be able to pass in updating parameters and return desirable responses.
         :param sensitivity_type: Method to obtain the sensitivity matrix. Default "FDM"
-        :type sensitivity_type:str
+        :type sensitivity_type: str
         :param param_list: A list of float or int of starting values of updating parameters.
         :type param_list: list
         :param target_list: A list of float or int of target/objectives of the updating function handler.
         :type target_list: list
         :param target_resp_list: Multi dimension list of k considered models/cases. If a single dimension list is provided
-         the class parses the list into a mutli dimension 1x(k=1) list
+         the class parses the list into a mutli dimension 1x(k=1) list.
+
         :param max_increm_steps: Maximum updating increments. Default 50
         :param param_increm_rate: Increment rate of parameters between each step. Default 10%
-        :param max_error: Error threshold to be minimize.
+        :param max_error: Maximum allowable parameter error.
         """
 
         # get model and load case inputs
-        self.sensitivity_type = kwargs.get(
-            "sensitivity_type", "FDM"
+        self.iterative_method = kwargs.get(
+            "iterative_method", "FDM"
         )  # default finite difference method
         self.function_handle = function_handle
         # for output
@@ -99,7 +101,7 @@ class ModelUpdating:
 
     def set_targets(self, target_list: list):
         """
-        Function to set/overwrite target responses - vector R - of updating procedure.
+        Set or overwrite updating parameters.
         :param target_list: list of target response value. Note: list order must correspond to the outputs returned
          by main() function. Refer to template main() function for information on setting up the updating procedure.
         :type target_list: list
@@ -108,7 +110,7 @@ class ModelUpdating:
 
     def set_param(self, param_list: list, variance_range=None):
         """
-        Function to set/overwrite updating parameters - inputs to main() function.
+        Set or overwrite updating parameters.
         :param param_list: list of starting parameter values. Note: list order must correspond to the input of
          main() updating function. Refer to template main() function for information on setting up the updating procedure.
         """
@@ -116,9 +118,9 @@ class ModelUpdating:
 
     def update_model(self, **kwargs):
         """
-        Main function to run updating procedure.
+        Calibrate the model.
 
-        Function accepts keyword arguments which are then passed to the function handlers of the updating class.
+        Keyword arguments passed under this function are passed to function handle of the updating object.
 
         Example:
             If the function handler takes two keyword arguments -
