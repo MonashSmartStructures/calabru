@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calabru.calibrator &#8212; Calabru 0.1 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/calabru/calibrator';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Calabru 0.1 documentation</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../installation.html">
+                        Installation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../tutorials.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../api.html">
+                        <no title>
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ccaprani/pycba" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/ccaprani" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../installation.html">
+                        Installation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../tutorials.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../api.html">
+                        <no title>
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ccaprani/pycba" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/ccaprani" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for calabru.calibrator</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Main calibration module</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<div class="viewcode-block" id="ModelUpdating"><a class="viewcode-back" href="../../gen/calabru.ModelUpdating.html#calabru.ModelUpdating">[docs]</a><span class="k">class</span> <span class="nc">ModelUpdating</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main updating/calibrating class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_handle</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param function_handle: Function handler to create and analyze models in Python environment. Note the function</span>
+<span class="sd">         handler must be able to pass in updating parameters and return desirable responses.</span>
+<span class="sd">        :param sensitivity_type: Method to obtain the sensitivity matrix. Default &quot;FDM&quot;</span>
+<span class="sd">        :type sensitivity_type: str</span>
+<span class="sd">        :param param_list: A list of float or int of starting values of updating parameters.</span>
+<span class="sd">        :type param_list: list</span>
+<span class="sd">        :param target_list: A list of float or int of target/objectives of the updating function handler.</span>
+<span class="sd">        :type target_list: list</span>
+<span class="sd">        :param target_resp_list: Multi dimension list of k considered models/cases. If a single dimension list is provided</span>
+<span class="sd">         the class parses the list into a mutli dimension 1x(k=1) list.</span>
+
+<span class="sd">        :param max_increm_steps: Maximum updating increments. Default 50</span>
+<span class="sd">        :param param_increm_rate: Increment rate of parameters between each step. Default 10%</span>
+<span class="sd">        :param max_error: Maximum allowable parameter error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># get model and load case inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterative_method</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;iterative_method&quot;</span><span class="p">,</span> <span class="s2">&quot;FDM&quot;</span>
+        <span class="p">)</span>  <span class="c1"># default finite difference method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function_handle</span> <span class="o">=</span> <span class="n">function_handle</span>
+        <span class="c1"># for output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_into_txt</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;write_output_txt&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="s2">&quot;Untitled_update_output&quot;</span><span class="p">)</span>
+        <span class="c1"># init vars of updating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_list</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_list&quot;</span><span class="p">,</span> <span class="p">[])</span>  <span class="c1"># starting param list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;param_bounds_list&quot;</span><span class="p">,</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_list</span><span class="p">]</span>
+        <span class="p">)</span>  <span class="c1"># bounds for params</span>
+        <span class="c1"># empty list means no bounds.</span>
+
+        <span class="c1"># check validity of param bounds</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_list</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="s2">&quot;Param bound list must match the number of parameters: Hint specify empty list [] to params that are not bounded&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;For </span><span class="si">{}</span><span class="s2"> bounds should have an upper and lower bound value&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">item</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;For </span><span class="si">{}</span><span class="s2"> Upper bound has lower value than its lower bound &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">item</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_list&quot;</span><span class="p">,</span> <span class="p">[])</span>  <span class="c1"># objectives</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="c1"># nest list into a sub list - to accommodate multi model considerations</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span><span class="p">]</span>
+
+        <span class="c1"># init var storing history of updating process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># sens matrix local to a single model data set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">global_sensitivity_matrix</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[]</span>
+        <span class="p">)</span>  <span class="c1"># sens matrix global to all model data set considered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[]</span>
+        <span class="p">)</span>  <span class="c1"># response difference between target ref and current updating step (resets every loop)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">global_resp_diff</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[]</span>
+        <span class="p">)</span>  <span class="c1"># response difference across all model data set considered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix_history</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record history of sensitivity matrices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record history of parameter update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_history</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record history of parameter update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff_history</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record history of</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">residue_history</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># options of updating</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_increm_steps</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_increm_steps&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">increment_rate</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;param_increm_rate&quot;</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_error</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_error&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diagnosis</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;diagnosis&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># kwarg to pass into function handler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwarg</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">set_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set or overwrite updating parameters.</span>
+<span class="sd">        :param target_list: list of target response value. Note: list order must correspond to the outputs returned</span>
+<span class="sd">         by main() function. Refer to template main() function for information on setting up the updating procedure.</span>
+<span class="sd">        :type target_list: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span> <span class="o">=</span> <span class="n">target_list</span>
+
+    <span class="k">def</span> <span class="nf">set_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">variance_range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set or overwrite updating parameters.</span>
+<span class="sd">        :param param_list: list of starting parameter values. Note: list order must correspond to the input of</span>
+<span class="sd">         main() updating function. Refer to template main() function for information on setting up the updating procedure.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_list</span> <span class="o">=</span> <span class="n">param_list</span>
+
+    <span class="k">def</span> <span class="nf">update_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calibrate the model.</span>
+
+<span class="sd">        Keyword arguments passed under this function are passed to function handle of the updating object.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            If the function handler takes two keyword arguments -</span>
+<span class="sd">            function_handler(arg_1=1,arg_2=2)</span>
+<span class="sd">            ,then the class function is executed as follows -</span>
+<span class="sd">            update_model(arg_1=1,arg_2=2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># set and store initial parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_list</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+        <span class="c1"># store kwarg to be passed into function_handle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwarg</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="c1"># begin update loop</span>
+        <span class="c1"># loop through each increment steps</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_increm_steps</span><span class="p">):</span>
+            <span class="n">current_param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># loop for each model considered in the calibration</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ith_target_resp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_compute_fdm_sensitivity</span><span class="p">(</span>
+                    <span class="n">param_list</span><span class="o">=</span><span class="n">current_param</span><span class="p">,</span> <span class="n">target_resp</span><span class="o">=</span><span class="n">ith_target_resp</span><span class="p">,</span> <span class="n">model_index</span><span class="o">=</span><span class="n">i</span>
+                <span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">global_sensitivity_matrix</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">global_resp_diff</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span>
+
+            <span class="n">esti</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pseudo_inv_estimation</span><span class="p">(</span>
+                <span class="n">sens_mat</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">global_sensitivity_matrix</span><span class="p">,</span> <span class="n">resp_diff</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">global_resp_diff</span>
+            <span class="p">)</span>
+            <span class="c1"># compute residue and check threshold</span>
+
+            <span class="c1"># update param steps</span>
+            <span class="n">param_increments</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">esti</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># convert np array to list</span>
+
+            <span class="n">param_esti_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">increm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_increments</span><span class="p">):</span>
+                <span class="n">new_kth_param_value</span> <span class="o">=</span> <span class="n">increm</span> <span class="o">+</span> <span class="n">current_param</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+                    <span class="c1"># bounds specify, check if param are within bounds</span>
+                    <span class="n">lb_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">ub_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_bounds_list</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">lb_val</span> <span class="o">&lt;=</span> <span class="n">new_kth_param_value</span> <span class="o">&lt;=</span> <span class="n">ub_val</span><span class="p">:</span>
+                        <span class="c1"># param out of bounds,take the bound values as new value</span>
+                        <span class="n">bound_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lb_val</span><span class="p">,</span> <span class="n">ub_val</span><span class="p">])</span>
+                        <span class="n">new_kth_param_value</span> <span class="o">=</span> <span class="n">bound_array</span><span class="p">[</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bound_array</span> <span class="o">-</span> <span class="n">new_kth_param_value</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+                        <span class="p">]</span>
+
+                <span class="n">param_esti_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_kth_param_value</span><span class="p">)</span>
+
+            <span class="c1"># param_esti_list = [a + b for (a, b) in zip(param_increments, current_param)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param_esti_list</span><span class="p">)</span>
+            <span class="c1"># check updating</span>
+            <span class="c1"># response error</span>
+            <span class="n">e_response</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                <span class="nb">sum</span><span class="p">([</span><span class="n">resp</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">resp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_resp_diff</span><span class="p">])</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">target</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+            <span class="c1"># parameter estimation error</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                <span class="nb">sum</span><span class="p">([</span><span class="n">estimates</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">estimates</span> <span class="ow">in</span> <span class="n">param_increments</span><span class="p">])</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">current</span> <span class="k">for</span> <span class="n">current</span> <span class="ow">in</span> <span class="n">current_param</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_error</span><span class="p">):</span>
+                <span class="k">break</span>
+            <span class="c1"># store for each step</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">global_sensitivity_matrix</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnosis</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">print_to</span><span class="p">(</span><span class="n">current_step</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">e_response</span><span class="p">)</span>
+
+            <span class="c1"># reset vars for next updating step</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">global_sensitivity_matrix</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">global_resp_diff</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># finalize parameter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># write to txt output</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_into_txt</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_output_txt</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_history</span>
+
+    <span class="k">def</span> <span class="nf">_compute_fdm_sensitivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_list</span><span class="p">,</span> <span class="n">target_resp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to compute sensitivity matrix based on finite difference sensitivity method. The function runs the</span>
+<span class="sd">        function handle defined during construction of class with the initial parameters as inputs. Then increments</span>
+<span class="sd">        the parameter values to obtain an incremental responses. Subsequently, assembles the sensitivity matrix.</span>
+
+<span class="sd">        :param param_list: Parameters at current updating step.</span>
+<span class="sd">        :type param_list:list</span>
+<span class="sd">        :param model_index: Index of output from function_handle which matches the current evaluating target response.</span>
+
+<span class="sd">        :returns array of sensitivity matrix stored in sensitivity_matrix var</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># get base response</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function_handle</span><span class="p">(</span><span class="n">param_list</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwarg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="c1"># store response as a list - for single var output from function_handle</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="n">response</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># get base response difference</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">ref_resp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">target_resp</span><span class="p">):</span>
+            <span class="c1"># check if target response is list,</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ref_resp</span><span class="p">,</span> <span class="s2">&quot;__len__&quot;</span><span class="p">):</span>
+                <span class="c1"># single scalar, get response diff via subtraction</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_resp</span> <span class="o">-</span> <span class="n">response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># target response is a list/array,</span>
+                <span class="n">kth_model_response</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref_resp</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="c1"># when dict is provided,</span>
+                    <span class="c1"># in format with two axis,i.e. x (key) and y (value) axis.</span>
+                    <span class="c1"># to ensure response and target vectors are same length,</span>
+                    <span class="c1"># interpolate the measurement to obtain the corresponding value at ordinate of numerical model.</span>
+                    <span class="n">time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ref_resp</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                    <span class="n">val</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ref_resp</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+                    <span class="n">model_time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_resp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+                        <span class="n">interp_ref_resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interpolate_measurements</span><span class="p">(</span>
+                            <span class="n">data_x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">data_y</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">model_x</span><span class="o">=</span><span class="n">model_time</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">interp_ref_resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interpolate_measurements</span><span class="p">(</span>
+                            <span class="n">data_x</span><span class="o">=</span><span class="n">model_time</span><span class="p">,</span> <span class="n">data_y</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">model_x</span><span class="o">=</span><span class="n">time</span>
+                        <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># create an absolute axis between 0 to 1</span>
+                    <span class="n">model_abs_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kth_model_response</span><span class="p">))</span>
+                    <span class="n">abs_time_measure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_resp</span><span class="p">))</span>
+
+                    <span class="n">interp_ref_resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interpolate_measurements</span><span class="p">(</span>
+                        <span class="n">data_x</span><span class="o">=</span><span class="n">abs_time_measure</span><span class="p">,</span> <span class="n">data_y</span><span class="o">=</span><span class="n">ref_resp</span><span class="p">,</span> <span class="n">model_x</span><span class="o">=</span><span class="n">model_abs_axis</span>
+                    <span class="p">)</span>
+                    <span class="c1"># plt.plot(model_abs_axis, interp_ref_resp)</span>
+                    <span class="c1"># plt.plot(model_abs_axis, kth_model_response)</span>
+                    <span class="c1"># plt.show()</span>
+                <span class="n">rmse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_rmse</span><span class="p">(</span>
+                    <span class="n">ref_response_list</span><span class="o">=</span><span class="n">interp_ref_resp</span><span class="p">,</span>
+                    <span class="n">current_response_list</span><span class="o">=</span><span class="n">kth_model_response</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="c1"># append rmse to resp disp</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">resp_diff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
+
+        <span class="c1"># init sensitivity matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">target_resp</span><span class="p">))]</span>
+
+        <span class="c1"># obtain the incremental response by incrementing each parameter by increment rate</span>
+        <span class="c1"># loop through each param</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">param_list</span><span class="p">):</span>
+            <span class="n">inc_param_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span>
+            <span class="n">inc_param_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">param</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">increment_rate</span>
+            <span class="n">inc_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function_handle</span><span class="p">(</span><span class="n">inc_param_list</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwarg</span><span class="p">)</span>
+            <span class="c1"># for each response of current param increment, calculate sensitivity, store to sensitivity matrix</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">target_resp</span><span class="p">)):</span>
+                <span class="c1"># checks if output from function handler is a list</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inc_response</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">inc_response</span> <span class="o">=</span> <span class="p">[</span><span class="n">inc_response</span><span class="p">]</span>
+
+                <span class="c1"># checks if the current response is a list</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">target_resp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;__len__&quot;</span><span class="p">):</span>
+                    <span class="c1"># calculate rmse</span>
+                    <span class="n">rmse</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_rmse</span><span class="p">(</span>
+                        <span class="n">ref_response_list</span><span class="o">=</span><span class="n">inc_response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                        <span class="n">current_response_list</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">rmse</span> <span class="o">/</span> <span class="p">(</span><span class="n">param</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">increment_rate</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="n">inc_response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">response</span><span class="p">[</span><span class="n">model_index</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+                        <span class="o">/</span> <span class="p">(</span><span class="n">param</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">increment_rate</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_updated_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_list</span><span class="p">):</span>
+
+        <span class="c1"># get base response</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function_handle</span><span class="p">(</span><span class="n">param_list</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwarg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">print_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_step</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+        <span class="c1"># function to print updating status to</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Curent update step </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_step</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current error/residue&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_write_output_txt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
+            <span class="c1"># create py file or overwrite existing</span>
+            <span class="c1"># writing headers and description at top of file</span>
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# Output updating analysis for: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+            <span class="c1"># time</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">dt_string</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y %H:%M:%S&quot;</span><span class="p">)</span>
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# Constructed on:</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt_string</span><span class="p">))</span>
+            <span class="c1"># write imports</span>
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Parameter history </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_update_history</span><span class="p">:</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">file_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Response history</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_history</span><span class="p">:</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">file_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Target response</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_response_list</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_pseudo_inv_estimation</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">,</span> <span class="n">resp_diff</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to estimate parameters for model updating using Pseudo Inverse Method</span>
+<span class="sd">        :param sens_mat: sensitivity matrix at current updating step</span>
+<span class="sd">        :type sens_mat: list of size r by p where r and p are the number of responses and parameters respectively</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sens_mat_transpose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span>
+        <span class="n">resp_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">param_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># init var</span>
+        <span class="n">estimate</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">resp_num</span> <span class="o">==</span> <span class="n">param_num</span><span class="p">:</span>
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">),</span> <span class="n">resp_diff</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">resp_num</span> <span class="o">&gt;</span> <span class="n">param_num</span><span class="p">:</span>
+            <span class="n">pseudo_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sens_mat_transpose</span><span class="p">,</span> <span class="n">sens_mat</span><span class="p">)),</span> <span class="n">sens_mat_transpose</span>
+            <span class="p">)</span>
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">pseudo_inv</span><span class="p">,</span> <span class="n">resp_diff</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">resp_num</span> <span class="o">&lt;</span> <span class="n">param_num</span><span class="p">:</span>
+            <span class="n">pseudo_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">sens_mat_transpose</span><span class="p">,</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                        <span class="n">sens_mat</span><span class="p">,</span>
+                        <span class="n">sens_mat_transpose</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">pseudo_inv</span><span class="p">,</span> <span class="n">resp_diff</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">estimate</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_calculate_rmse</span><span class="p">(</span><span class="n">ref_response_list</span><span class="p">,</span> <span class="n">current_response_list</span><span class="p">):</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_response_list</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="nb">sum</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="p">(</span><span class="n">ref</span> <span class="o">-</span> <span class="n">current</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">N</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">current</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ref_response_list</span><span class="p">,</span> <span class="n">current_response_list</span><span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_bayesian_param_estimation</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">,</span> <span class="n">resp_diff</span><span class="p">,</span> <span class="n">current_param</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">cr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to perform parameter estimation using Bayesian approach. Here, a gain matrix G is calculated</span>
+<span class="sd">        from the provided confidence weighing for parameter and responses.</span>
+<span class="sd">        :param current_param:</span>
+<span class="sd">        :param cp:</span>
+<span class="sd">        :parm cr:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sens_mat_transpose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span>
+        <span class="n">resp_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">param_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># init var</span>
+        <span class="n">gain_mat</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">estimate</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">resp_num</span> <span class="o">&gt;=</span> <span class="n">param_num</span><span class="p">:</span>
+            <span class="n">gain_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span>
+                        <span class="n">cp</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sens_mat_transpose</span><span class="p">,</span> <span class="n">cr</span><span class="p">),</span> <span class="n">sens_mat</span><span class="p">)</span>
+                    <span class="p">),</span>
+                    <span class="n">sens_mat_transpose</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">cr</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">resp_num</span> <span class="o">&lt;</span> <span class="n">param_num</span><span class="p">:</span>
+            <span class="n">cp_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+            <span class="n">cr_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+            <span class="n">gain_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cp_inv</span><span class="p">,</span> <span class="n">sens_mat_transpose</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span>
+                    <span class="n">cr_inv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sens_mat</span><span class="p">,</span> <span class="n">cp_inv</span><span class="p">),</span> <span class="n">sens_mat_transpose</span><span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Bayesian parameters error&quot;</span><span class="p">)</span>
+        <span class="n">estimate</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">p</span> <span class="o">+</span> <span class="n">gr</span> <span class="k">for</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">gr</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">current_param</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">gain_mat</span><span class="p">,</span> <span class="o">-</span><span class="n">resp_diff</span><span class="p">))</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">estimate</span>
+
+    <span class="k">def</span> <span class="nf">get_updating_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extracts information of the updating procedure</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_interpolate_measurements</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">model_x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to interpolate measurement points on numerical/system model given vectors of measurement (1) time seires</span>
+<span class="sd">        , and (2) values.</span>
+
+<span class="sd">        This function is used when length missmatch between measurement vector and model output vector.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># takes in a vector of common x axis e.g. time ratio of positional times over total movement time window (0 to 1)</span>
+
+        <span class="c1"># create interp function using measurment data - linear interp</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">data_x</span><span class="p">,</span> <span class="n">data_y</span><span class="p">)</span>
+
+        <span class="c1"># apply interp function to ospgrillage data to get respctive positional strain values</span>
+        <span class="k">return</span> <span class="n">f1</span><span class="p">(</span><span class="n">model_x</span><span class="p">)</span></div>
+        <span class="c1"># return the decimated curve value</span>
+</pre></div>
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Colin Caprani, Jun Wei Ngan.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
