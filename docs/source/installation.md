@@ -24,7 +24,7 @@ For contributions, first fork the repo and clone from your fork. `Here <https://
 
 Tests
 -----
-`PyCBA` comes with ``pytest`` functions to verify the correct functioning of the package. 
+`calabru` comes with ``pytest`` functions to verify the correct functioning of the package. 
 Users can test this using: ::
 
     python -m pytest
