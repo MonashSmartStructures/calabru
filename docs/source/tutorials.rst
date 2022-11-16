@@ -7,4 +7,3 @@ The easiest way to get started with `calabru` is to jump straight in and have a 
    :maxdepth: 1
 
    notebooks/intro
-   notebooks/example
