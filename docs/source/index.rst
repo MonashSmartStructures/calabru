@@ -16,9 +16,11 @@ Documentation
 
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
-   notebooks/intro
-   notebooks/example
+   installation
+   tutorials
+   api
 
 Indices and tables
 ==================
