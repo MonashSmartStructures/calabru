@@ -1,5 +1,41 @@
 [project]
+name = "calabru"
+description = "Calibration of structural models"
+readme = "README.md"
+version = "0.1"
+license = {file = "LICENSE"}
+keywords = ["calibration", "structural", "models", "finite element", "measurement"]
+authors = [ 
+    {name = "Jun Wei Ngan", email = "jun.ngan@monash.edu"}, 
+    {name = "Colin Caprani", email = "colin.caprani@monash.edu" } 
+    ]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Topic :: Scientific/Engineering",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
 requires-python = ">=3.8"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "scipy",
+]
+# dynamic = ["version", "description"]
+
+[project.urls]  
+documentation = "https://monashsmartstructures.github.io/pycba/"
+repository = "https://github.com/monashsmartstructures/calabru/"
+tracker = "https://github.com/monashsmartstructures/calabru/issues/"
 
 [build-system]
 requires = ["wheel >= 0.31.0",
