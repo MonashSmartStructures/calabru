@@ -176,7 +176,7 @@ class ModelUpdating:
             # response error
             e_response = np.sqrt(
                 sum([resp**2 for resp in self.global_resp_diff])
-            ) / np.sqrt(sum([target**2 for target in self.target_response_list[0]]))
+            )
             # parameter estimation error
             error = np.sqrt(
                 sum([estimates**2 for estimates in param_increments])

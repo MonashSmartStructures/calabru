@@ -34,6 +34,34 @@ def test_basic_update():
     )
 
 
+def test_main():
+    start = [0.2,  # load, P
+             0.1,  # moment of inertia, I
+             ]
+    target = [[1047.057906932444,
+  [0.0,
+   3.847756717425916e-05,
+   7.335795722107879e-05,
+   0.0001001430188545662,
+   0.00011472208165921942,
+   0.00011472208165922035,
+   0.00010014301885456844,
+   7.335795722108123e-05,
+   3.847756717426085e-05,
+   0.0]]]
+    # node displacements
+
+    simple_beam_updating = ModelUpdating(
+        function_handle=fixtures.main,
+        param_list=start,
+        target_list=target,
+        max_error=0.1,
+        write_output_txt=False
+    )
+    simple_beam_updating.update_model()
+    print(simple_beam_updating.param_update_history)
+
+
 def test_target_resp_as_list():
     """
     Checks updating using a list of measurements as an element entry of the target measurement. The updating should

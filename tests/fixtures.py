@@ -159,6 +159,150 @@ def beam_with_patch_load(p_matrix: list):
 
     return r_mat
 
+def main(p_matrix: list):
+    # sort parameter variable
+
+    P = 1000
+    Iz1 = p_matrix[0]
+    Iz2 = p_matrix[1]
+
+    # Adopted units: N and m
+    kilo = 1e3
+    milli = 1e-3
+    N = 1
+    m = 1
+    mm = milli * m
+    m2 = m ** 2
+    m3 = m ** 3
+    m4 = m ** 4
+    kN = kilo * N
+    MPa = N / ((mm) ** 2)
+    GPa = kilo * MPa
+
+    # parameters of bridge grillage
+    L = 10 * m  # span
+    w = 5 * m  # width
+    n_l = 7  # number of longitudinal members
+    n_t = 10  # number of transverse members
+    edge_dist = 1 * m  # distance between edge beam and first exterior beam
+    ext_to_int_dist = (
+        2.2775 * m
+    )  # distance between first exterior beam and first interior beam
+    angle = 0  # skew angle
+    mesh_type = "Oblique"
+
+    # define material
+    concrete = og.create_material(
+        material="concrete", code="AS5100-2017", grade="65MPa"
+    )
+
+    # define sections (parameters from LUSAS model)
+    edge_longitudinal_section = og.create_section(
+        A=0.934 * m2,
+        J=0.1857 * m3,
+        Iz=Iz2 * m4,
+        Iy=0.213602 * m4,
+        Az=0.444795 * m2,
+        Ay=0.258704 * m2,
+    )
+
+    longitudinal_section = og.create_section(
+        A=1.025 * m2,
+        J=0.1878 * m3,
+        Iz=Iz1 * m4,
+        Iy=0.113887e-3 * m4,
+        Az=0.0371929 * m2,
+        Ay=0.0371902 * m2,
+    )
+
+    transverse_section = og.create_section(
+        A=0.504 * m2,
+        J=5.22303e-3 * m3,
+        Iy=0.32928 * m4,
+        Iz=1.3608e-3 * m4,
+        Ay=0.42 * m2,
+        Az=0.42 * m2,
+    )
+
+    end_transverse_section = og.create_section(
+        A=0.504 / 2 * m2,
+        J=2.5012e-3 * m3,
+        Iy=0.04116 * m4,
+        Iz=0.6804e-3 * m4,
+        Ay=0.21 * m2,
+        Az=0.21 * m2,
+    )
+
+    # define grillage members
+    longitudinal_beam = og.create_member(
+        section=longitudinal_section, material=concrete
+    )
+    edge_longitudinal_beam = og.create_member(
+        section=edge_longitudinal_section, material=concrete
+    )
+    transverse_slab = og.create_member(section=transverse_section, material=concrete)
+    end_transverse_slab = og.create_member(
+        section=end_transverse_section, material=concrete
+    )
+
+    # create grillage
+    simple_bridge = og.create_grillage(
+        bridge_name="simple_bridge",
+        long_dim=L,
+        width=w,
+        skew=angle,
+        num_long_grid=n_l,
+        num_trans_grid=n_t,
+        edge_beam_dist=edge_dist,
+        mesh_type=mesh_type,
+    )
+
+    simple_bridge.set_member(longitudinal_beam, member="interior_main_beam")
+    simple_bridge.set_member(longitudinal_beam, member="exterior_main_beam_1")
+    simple_bridge.set_member(longitudinal_beam, member="exterior_main_beam_2")
+    simple_bridge.set_member(edge_longitudinal_beam, member="edge_beam")
+    simple_bridge.set_member(transverse_slab, member="transverse_slab")
+    simple_bridge.set_member(end_transverse_slab, member="start_edge")
+    simple_bridge.set_member(end_transverse_slab, member="end_edge")
+    simple_bridge.create_osp_model(pyfile=False)
+    og.opsplt.plot_model()
+    # add load case
+    # Patch load over entire bridge deck (P is kN/m2)
+    P = P * kN / m2  # magnitude of patch vertex
+    patch_point_1 = og.create_load_vertex(x=0, z=0, p=P)
+    patch_point_2 = og.create_load_vertex(x=L, z=0, p=P)
+    patch_point_3 = og.create_load_vertex(x=L, z=w, p=P)
+    patch_point_4 = og.create_load_vertex(x=0, z=w, p=P)
+    test_patch_load = og.create_load(
+        loadtype="patch",
+        name="Test Load",
+        point1=patch_point_1,
+        point2=patch_point_2,
+        point3=patch_point_3,
+        point4=patch_point_4,
+    )
+
+    test_point_load = og.create_load(
+        loadtype="point",
+        name="Test Load",
+        point1=og.create_load_vertex(x=L / 2, z=w / 2, p=P),
+    )
+
+    # Create load case, add loads, and assign
+    patch_case = og.create_load_case(name="test patch load case")
+    patch_case.add_load(test_patch_load)
+    point_case = og.create_load_case(name="test point load case")
+    point_case.add_load(test_point_load)
+    # sn8474.add_load_case(patch_case)
+    simple_bridge.add_load_case(point_case)
+
+    simple_bridge.analyze()
+    results = simple_bridge.get_results()
+
+    # arbitrary force components
+    r_mat = [[og.ops.eleForce(25)[1],[og.ops.nodeDisp(n)[1] for n in [2,9,16,23,30,37,44,51,58,65]]]]
+
+    return r_mat
 
 def beam_with_patch_load_including_deflected_shape_output(p_matrix: list):
     """
